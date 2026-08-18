@@ -35,7 +35,7 @@ function Menu() {
               ))}
               <li>Đăng nhập</li>
             </ul>
-            <Hotline showIcon showContact className="mt-7" />
+            <Hotline isMenu className="mt-7" />
           </div>
         </DrawerContent>
       </Drawer>
