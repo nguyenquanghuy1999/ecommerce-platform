@@ -11,7 +11,7 @@ import Hotline from "./Hotline";
 
 function Menu() {
   return (
-    <div className="text-primary text-[30px] md:hidden">
+    <div className="text-primary relative top-1.25 text-[30px] md:hidden">
       <Drawer swipeDirection="left">
         <DrawerTrigger
           render={
