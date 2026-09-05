@@ -230,13 +230,15 @@ export function Search() {
             </div>
             <PopoverDescription>
               {data.length > 0 && (
-                <Button
-                  variant="link"
-                  className="flex justify-self-center hover:cursor-pointer"
-                  onClick={goToSearch}
-                >
-                  Xem tất cả
-                </Button>
+                <div className="flex justify-center">
+                  <Button
+                    variant="link"
+                    className="hover:cursor-pointer"
+                    onClick={goToSearch}
+                  >
+                    Xem tất cả
+                  </Button>
+                </div>
               )}
             </PopoverDescription>
           </PopoverHeader>
