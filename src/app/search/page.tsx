@@ -1,7 +1,7 @@
 import ProductItem from "@/src/app/search/ProductItem";
 import SearchEmpty from "@/src/app/search/SearchEmpty";
 import { Separator } from "@/src/components/ui/separator";
-import { searchProducts } from "@/src/services/productsService";
+import { searchProducts } from "@/src/services/productService";
 
 export default async function SearchPage({
   searchParams,

@@ -20,7 +20,7 @@ import {
   ItemTitle,
 } from "@/src/components/ui/item";
 import { cn, formatPrice } from "@/src/lib/utils";
-import { searchProducts } from "@/src/services/productsService";
+import { searchProducts } from "@/src/services/productService";
 import { Product } from "@/src/types";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
