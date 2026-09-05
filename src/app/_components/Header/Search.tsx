@@ -196,7 +196,7 @@ export function Search() {
               Kết quả tìm kiếm: {data.length} sản phẩm
             </PopoverTitle>
             <div className="flex w-full max-w-md flex-col gap-6">
-              <ItemGroup className="max-h-87.5 gap-4 overflow-y-scroll">
+              <ItemGroup className="max-h-87.5 scrollbar-thin gap-4 overflow-y-scroll">
                 {data.map((item) => (
                   <Item
                     key={item.id}
