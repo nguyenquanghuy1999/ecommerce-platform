@@ -1,6 +1,6 @@
 import { getCategories } from "@/src/services/categoryService";
 import MenuWrapper from "./MenuWrapper";
-import CategoryList from "../Nav/CategoryList";
+import CategoryList from "../CategoryList";
 
 export default async function Menu() {
   const categories = await getCategories();
