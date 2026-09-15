@@ -1,24 +1,23 @@
 import { Button } from "@/src/components/ui/button";
 import { formatPrice } from "@/src/lib/utils";
-import { Product } from "@/src/types";
+import { Product } from "@/src/types/";
 import Image from "next/image";
 import { IconCart } from "../_components/Header/icons/IconCart";
 
-
-export default function ProductItem({ item }: { item: Product }) {
+export default function ProductItem({ data }: { data: Product }) {
   return (
     <div className="group text-md hover:border-primary text min-h-80 cursor-pointer overflow-hidden shadow-lg hover:border">
       <Image
-        alt={item.name}
-        src={`${item.image}`}
+        alt={data.name}
+        src={`${data.image}`}
         width={285}
         height={200}
         className="mx-auto h-50 object-contain transition-all duration-300 ease-in group-hover:scale-105"
       />
       <div className="mt-2 min-h-20 px-3">
-        <h2>{item.name}</h2>
+        <h2>{data.name}</h2>
         <p className="text-primary">
-          {formatPrice(item.price)}
+          {formatPrice(data.price)}
           <u className="relative bottom-px text-[11px]">đ</u>
         </p>
       </div>

@@ -1,17 +1,42 @@
 import { db } from "@/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  DocumentData,
+  getDocs,
+  query,
+  QueryDocumentSnapshot,
+  where,
+} from "firebase/firestore";
 import { Category } from "../types";
 
-export const getCategories = async (): Promise<Category[]> => {
-  const snapshot = await getDocs(collection(db, "categories"));
-  const result = snapshot.docs.map((doc) => {
-    const data = doc.data();
-    return {
-      id: data.id,
-      name: data.name,
-      image: data.image,
-    };
-  });
+const categoriesCollection = collection(db, "categories");
 
-  return result;
+const category = (doc: QueryDocumentSnapshot<DocumentData>): Category => {
+  const data = doc.data();
+  return {
+    id: data.id,
+    name: data.name,
+    image: data.image,
+    normalizedName: data.normalizedName,
+  };
+};
+
+export const getCategories = async (): Promise<Category[]> => {
+  const snapshot = await getDocs(categoriesCollection);
+  return snapshot.docs.map(category);
+};
+
+export const getCategoryByName = async (
+  name: string,
+): Promise<Category | null> => {
+  const normalizedName = name.trim().toLowerCase();
+  const q = query(
+    categoriesCollection,
+    where("normalizedName", "==", normalizedName),
+  );
+  const snapshot = await getDocs(q);
+  if (snapshot.empty) {
+    return null;
+  }
+  return category(snapshot.docs[0]);
 };
