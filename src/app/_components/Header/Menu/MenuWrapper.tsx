@@ -21,6 +21,8 @@ import { LuBriefcaseBusiness, LuCircleUserRound } from "react-icons/lu";
 import { MdOutlineMail } from "react-icons/md";
 import { RiMenu2Fill } from "react-icons/ri";
 import Hotline from "../Hotline";
+import { Category } from "@/src/types";
+import CategoryList from "../CategoryList";
 
 const icons = [
   AiOutlineHome,
@@ -30,7 +32,11 @@ const icons = [
   MdOutlineMail,
 ];
 
-export default function MenuWrapper({ children }: { children: ReactNode }) {
+export default function MenuWrapper({
+  categories,
+}: {
+  categories: Category[];
+}) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -62,7 +68,9 @@ export default function MenuWrapper({ children }: { children: ReactNode }) {
                   <BiCategory />
                   <span className="ml-2">Danh mục sản phẩm</span>
                 </AccordionTrigger>
-                <AccordionContent>{children}</AccordionContent>
+                <AccordionContent>
+                  <CategoryList categories={categories} setOpen={setOpen} />
+                </AccordionContent>
               </AccordionItem>
             </Accordion>
             <ul className="mt-7 text-[17px]">

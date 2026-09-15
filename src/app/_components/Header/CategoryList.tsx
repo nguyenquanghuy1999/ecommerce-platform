@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Item,
   ItemContent,
@@ -7,12 +9,17 @@ import {
 } from "@/src/components/ui/item";
 import { Category } from "@/src/types";
 import Image from "next/image";
+import Link from "next/link";
+import { Dispatch, SetStateAction } from "react";
 
 export default function CategoryList({
   categories,
+  setOpen,
 }: {
   categories: Category[];
+  setOpen?: Dispatch<SetStateAction<boolean>>;
 }) {
+
   return (
     <div className="flex max-h-57.5 w-full max-w-md flex-col gap-6 overflow-y-scroll md:max-h-87.75 [&::-webkit-scrollbar]:w-0.75 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-400">
       <ItemGroup className="gap-1">
@@ -21,7 +28,10 @@ export default function CategoryList({
             key={category.id}
             role="listitem"
             render={
-              <a href="#">
+              <Link
+                href={`/category/${category.normalizedName}`}
+                onClick={() => setOpen?.(false)}
+              >
                 <ItemMedia>
                   <Image
                     src={`${category.image}`}
@@ -36,7 +46,7 @@ export default function CategoryList({
                     {category.name}
                   </ItemTitle>
                 </ItemContent>
-              </a>
+              </Link>
             }
           />
         ))}
