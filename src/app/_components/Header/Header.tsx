@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import Hotline from "./Hotline";
@@ -10,18 +9,15 @@ import { Search } from "./Search";
 
 function Header() {
   return (
-    <>
+    <div className="fixed top-0 right-0 left-0 z-1 bg-white">
       <div className="flex items-center justify-between px-2.5 py-2.5 md:px-12.5 lg:px-17.5 xl:px-25">
         <Menu />
-        <div className="ml-2 flex-1 md:flex-none">
+        <div className="flex-1 md:ml-0 md:flex-none">
           <Link href="/">
-            <Image
-              src="/images/logo-2.png"
-              alt="logo"
-              width={150}
-              height={50}
-              className="m-auto object-contain"
-            />
+            <div className="text-center">
+              <span className="text-primary text-[40px] font-bold">H</span>
+              <span className="text-[30px] font-medium">Shop</span>
+            </div>
           </Link>
         </div>
         <Suspense>
@@ -42,9 +38,8 @@ function Header() {
           <IconCart className="fill-primary stroke-primary lg:fill-foreground lg:stroke-foreground" />
         </div>
       </div>
-
       <Nav />
-    </>
+    </div>
   );
 }
 export default Header;
