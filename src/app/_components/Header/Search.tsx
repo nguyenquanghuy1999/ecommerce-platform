@@ -20,11 +20,12 @@ import {
   ItemTitle,
 } from "@/src/components/ui/item";
 import { cn, formatPrice } from "@/src/lib/utils";
-import { searchProducts } from "@/src/services/productService";
+import { getProducts } from "@/src/services/productService";
 import { Product } from "@/src/types";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
+import { searchProducts } from "@/src/lib/searchProducts";
 
 export function Search() {
   const router = useRouter();
@@ -81,8 +82,10 @@ export function Search() {
 
     const handleSearch = async () => {
       try {
-        const searchResult = await searchProducts(keyword);
+        const products = await getProducts();
+        const searchResult = searchProducts(products, keyword);
         if (isEnterSearch) {
+          setIsLoading(false);
           setData(searchResult);
           return;
         }
