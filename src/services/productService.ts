@@ -21,12 +21,24 @@ const product = (doc: QueryDocumentSnapshot<DocumentData>): Product => {
     color: data.color,
     categoryId: data.categoryId,
     memory: data.memory,
+    details: data.details,
   };
 };
 
 export const getProducts = async (): Promise<Product[]> => {
   const snapshot = await getDocs(productsCollection);
   return snapshot.docs.map(product);
+};
+
+export const getProductByName = async (
+  name: string,
+): Promise<Product | null> => {
+  const q = query(productsCollection, where("name", "==", name));
+  const snapshot = await getDocs(q);
+  if (snapshot.empty) {
+    return null;
+  }
+  return product(snapshot.docs[0]);
 };
 
 export const getProductsByCategoryId = async (
