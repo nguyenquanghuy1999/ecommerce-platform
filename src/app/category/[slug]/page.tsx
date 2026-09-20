@@ -24,24 +24,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: category.name,
-    description: `Khám phá các sản phẩm ${category.name} với giá tốt tại HShop.`,
+    title: `${category.name}, công nghệ gần đây | Giá rẻ - Trả góp 0%`,
+    description: `Mua ${category.name}, công nghệ giá rẻ, hàng chính hãng, trả góp 0%, bảo hành uy tín. Mua ngay ${category.name} tại đây.`,
     alternates: {
       canonical: `/category/${slug}`,
     },
     openGraph: {
-      title: category.name,
-      description: `Khám phá các sản phẩm ${category.name} với giá tốt tại HShop.`,
+      title: `${category.name}, công nghệ gần đây | Giá rẻ - Trả góp 0%`,
+      description: `Mua ${category.name}, công nghệ giá rẻ, hàng chính hãng, trả góp 0%, bảo hành uy tín. Mua ngay ${category.name} tại đây.`,
       url: `/category/${slug}`,
-      type: "website",
-      images: category.image
-        ? [
-            {
-              url: category.image,
-              alt: category.name,
-            },
-          ]
-        : undefined,
+      images: [
+        {
+          url: category.image,
+          alt: category.name,
+        },
+      ],
     },
   };
 }
