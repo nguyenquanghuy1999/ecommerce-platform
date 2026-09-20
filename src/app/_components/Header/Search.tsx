@@ -9,7 +9,6 @@ import {
 } from "@/src/components/ui/popover";
 import { Spinner } from "@/src/components/ui/spinner";
 import { IoSearchOutline } from "react-icons/io5";
-
 import { Button } from "@/src/components/ui/button";
 import {
   Item,
@@ -19,13 +18,13 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/src/components/ui/item";
+import { searchProducts } from "@/src/lib/searchProducts";
 import { cn, formatPrice } from "@/src/lib/utils";
 import { getProducts } from "@/src/services/productService";
 import { Product } from "@/src/types";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
-import { searchProducts } from "@/src/lib/searchProducts";
 
 export function Search() {
   const router = useRouter();
@@ -205,6 +204,10 @@ export function Search() {
                     key={item.id}
                     variant="outline"
                     role="listitem"
+                    onMouseDown={() => {
+                      setIsResult(false);
+                      router.push(`/${item.name}`);
+                    }}
                     render={
                       <a href="#">
                         <ItemMedia variant="image">
