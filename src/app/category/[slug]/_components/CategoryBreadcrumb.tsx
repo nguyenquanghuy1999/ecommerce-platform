@@ -16,13 +16,11 @@ export default function CategoryBreadcrumb({
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        <BreadcrumbItem>
+        <BreadcrumbItem className="hover:text-primary-light">
           <Link href="/">Trang chủ</Link>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbLink href="#">Danh mục</BreadcrumbLink>
-        </BreadcrumbItem>
+        <BreadcrumbItem>Danh mục</BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbPage>{currentPage}</BreadcrumbPage>
