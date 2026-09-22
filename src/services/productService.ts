@@ -22,6 +22,7 @@ const product = (doc: QueryDocumentSnapshot<DocumentData>): Product => {
     categoryId: data.categoryId,
     memory: data.memory,
     details: data.details,
+    slug: data.slug,
   };
 };
 
@@ -30,10 +31,10 @@ export const getProducts = async (): Promise<Product[]> => {
   return snapshot.docs.map(product);
 };
 
-export const getProductByName = async (
-  name: string,
+export const getProductBySlug = async (
+  slug: string,
 ): Promise<Product | null> => {
-  const q = query(productsCollection, where("name", "==", name));
+  const q = query(productsCollection, where("slug", "==", slug));
   const snapshot = await getDocs(q);
   if (snapshot.empty) {
     return null;

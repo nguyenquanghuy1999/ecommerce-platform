@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function ProductItem({ data }: { data: Product }) {
   return (
-    <Link href={`/${data.name}`}>
+    <Link href={`/${data.slug}`}>
       <div className="group text-md hover:border-primary text min-h-80 cursor-pointer overflow-hidden shadow-lg hover:border">
         <Image
           alt={data.name}

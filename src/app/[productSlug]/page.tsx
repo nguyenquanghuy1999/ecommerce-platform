@@ -1,5 +1,5 @@
 import NotFound from "@/src/app/_components/NotFound";
-import { getProductByName } from "@/src/services/productService";
+import { getProductBySlug } from "@/src/services/productService";
 import PolicyList from "./PolicyList";
 import ProductDescription from "./ProductDescription";
 import ProductInfo from "./ProductInfo";
@@ -11,8 +11,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { productSlug } = await params;
-  const encodedSlug = decodeURIComponent(productSlug);
-  const product = await getProductByName(encodedSlug);
+  const product = await getProductBySlug(productSlug);
 
   if (!product) {
     return {
@@ -50,8 +49,7 @@ export default async function ProductDetail({
   params: Promise<{ productSlug: string }>;
 }) {
   const { productSlug } = await params;
-  const encodedProductSlug = decodeURIComponent(productSlug);
-  const product = await getProductByName(encodedProductSlug);
+  const product = await getProductBySlug(productSlug);
 
   if (!product) {
     return <NotFound />;

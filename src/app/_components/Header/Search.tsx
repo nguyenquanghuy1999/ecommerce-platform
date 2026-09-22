@@ -206,7 +206,7 @@ export function Search() {
                     role="listitem"
                     onMouseDown={() => {
                       setIsResult(false);
-                      router.push(`/${item.name}`);
+                      router.push(`/${item.slug}`);
                     }}
                     render={
                       <a href="#">
