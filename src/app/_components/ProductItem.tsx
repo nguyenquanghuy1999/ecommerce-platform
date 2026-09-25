@@ -1,7 +1,7 @@
 import { Product } from "@/src/types/";
 import Image from "next/image";
 import Link from "next/link";
-import AddToCartButton from "./Header/AddToCartButton";
+import AddToCartButton from "./AddToCartButton";
 import Price from "./Price";
 
 export default function ProductItem({ data }: { data: Product }) {
