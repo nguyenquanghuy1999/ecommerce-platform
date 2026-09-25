@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import Hotline from "./Hotline";
-import { IconCart } from "./icons/IconCart";
-import { IconUser } from "./icons/IconUser";
+import { IconCart } from "../icons/IconCart";
+import { IconUser } from "../icons/IconUser";
 import Menu from "./Menu";
 import Nav from "./Nav";
 import { Search } from "./Search";
@@ -34,9 +34,11 @@ function Header() {
           </div>
         </div>
 
-        <div className="px-1.5 hover:cursor-pointer md:px-0">
-          <IconCart className="fill-primary stroke-primary lg:fill-foreground lg:stroke-foreground" />
-        </div>
+        <Link href="/cart">
+          <div className="px-1.5 hover:cursor-pointer md:px-0">
+            <IconCart className="fill-primary stroke-primary lg:fill-foreground lg:stroke-foreground" />
+          </div>
+        </Link>
       </div>
       <Nav />
     </div>

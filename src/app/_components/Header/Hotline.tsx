@@ -1,5 +1,5 @@
 import { cn } from "@/src/lib/utils";
-import { IconPhone } from "./icons/IconPhone";
+import { IconPhone } from "../icons/IconPhone";
 
 export default function Hotline({
   isMenu,
