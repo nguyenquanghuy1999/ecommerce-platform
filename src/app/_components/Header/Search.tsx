@@ -1,14 +1,4 @@
 "use client";
-import {
-  Popover,
-  PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
-  PopoverTrigger,
-} from "@/src/components/ui/popover";
-import { Spinner } from "@/src/components/ui/spinner";
-import { IoSearchOutline } from "react-icons/io5";
 import { Button } from "@/src/components/ui/button";
 import {
   Item,
@@ -18,13 +8,24 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/src/components/ui/item";
+import {
+  Popover,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@/src/components/ui/popover";
+import { Spinner } from "@/src/components/ui/spinner";
 import { searchProducts } from "@/src/lib/searchProducts";
-import { cn, formatPrice } from "@/src/lib/utils";
+import { cn } from "@/src/lib/utils";
 import { getProducts } from "@/src/services/productService";
 import { Product } from "@/src/types";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
+import { IoSearchOutline } from "react-icons/io5";
+import Price from "../Price";
 
 export function Search() {
   const router = useRouter();
@@ -224,8 +225,7 @@ export function Search() {
                             {item.name}
                           </ItemTitle>
                           <ItemDescription className="text-primary">
-                            {formatPrice(item.price)}
-                            <u className="relative bottom-px text-[11px]">đ</u>
+                            <Price value={item.price} />
                           </ItemDescription>
                         </ItemContent>
                       </a>

@@ -1,9 +1,9 @@
 import { Button } from "@/src/components/ui/button";
-import { formatPrice } from "@/src/lib/utils";
 import { Product } from "@/src/types/";
 import Image from "next/image";
-import { IconCart } from "../_components/Header/icons/IconCart";
 import Link from "next/link";
+import { IconCart } from "../_components/Header/icons/IconCart";
+import Price from "./Price";
 
 export default function ProductItem({ data }: { data: Product }) {
   return (
@@ -18,10 +18,7 @@ export default function ProductItem({ data }: { data: Product }) {
         />
         <div className="mt-2 min-h-20 px-3">
           <h2>{data.name}</h2>
-          <p className="text-primary">
-            {formatPrice(data.price)}
-            <u className="relative bottom-px text-[11px]">đ</u>
-          </p>
+          <Price value={data.price} size="md" className="text-primary" />
         </div>
         <div className="mr-2 py-3 text-end opacity-0 transition-all duration-200 ease-in group-hover:opacity-100">
           <Button className="cursor-pointer">
