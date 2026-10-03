@@ -66,7 +66,7 @@ export default async function ProductDetail({
         <div className="flex-1 lg:w-[70%]">
           <ProductInfo product={product} />
         </div>
-        <div className="hidden w-[30%] flex-col items-center lg:flex">
+        <div className="ml-5 hidden w-[30%] flex-col items-center lg:flex">
           <PolicyList />
         </div>
       </div>
