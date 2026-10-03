@@ -1,12 +1,16 @@
 "use client";
 import { Button } from "@/src/components/ui/button";
-import { cn, formatPrice } from "@/src/lib/utils";
+import { toast } from "@/src/components/ui/toast";
 import { Product } from "@/src/types";
 import Image from "next/image";
 import { useState } from "react";
 
 export default function ProductInfo({ product }: { product: Product }) {
-  const [count, setCount] = useState(1);
+    toast.add({
+      type: "success",
+      description: `Đã thêm ${product.name} vào giỏ.`,
+      timeout: 3000,
+    });
   return (
         <Price
           value={product.price}

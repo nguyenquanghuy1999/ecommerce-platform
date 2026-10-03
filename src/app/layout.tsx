@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "./_components/Header";
 import "./globals.css";
+import { Toaster } from "../components/ui/toast";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="mt-20 px-2.5 md:mt-30.5 md:px-12.5 lg:px-17.5 xl:px-25">
           {children}
         </div>
+        <Toaster />
       </body>
     </html>
   );
