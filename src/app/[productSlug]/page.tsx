@@ -6,7 +6,7 @@ import ProductInfo from "./_components/ProductInfo";
 import { Metadata } from "next";
 import { cache } from "react";
 
-const getProduct = cache(async (slug: string) => {
+const getProduct = cache((slug: string) => {
   return getProductBySlug(slug);
 });
 

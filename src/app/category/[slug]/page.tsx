@@ -5,7 +5,7 @@ import CategoryWrapper from "./_components/CategoryWrapper";
 import { Metadata } from "next";
 import { cache } from "react";
 
-const getCategory = cache(async (slug: string) => {
+const getCategory = cache((slug: string) => {
   return getCategoryByName(slug);
 });
 
