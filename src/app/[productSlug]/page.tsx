@@ -1,9 +1,14 @@
 import NotFound from "@/src/app/_components/NotFound";
-import { getProductByName } from "@/src/services/productService";
-import PolicyList from "./PolicyList";
-import ProductDescription from "./ProductDescription";
-import ProductInfo from "./ProductInfo";
+import { getProductBySlug } from "@/src/services/productService";
+import PolicyList from "./_components/PolicyList";
+import ProductDescription from "./_components/ProductDescription";
+import ProductInfo from "./_components/ProductInfo";
 import { Metadata } from "next";
+import { cache } from "react";
+
+const getProduct = cache(async (slug: string) => {
+  return getProductBySlug(slug);
+});
 
 type Props = {
   params: Promise<{ productSlug: string }>;
@@ -11,8 +16,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { productSlug } = await params;
-  const encodedSlug = decodeURIComponent(productSlug);
-  const product = await getProductByName(encodedSlug);
+  const product = await getProduct(productSlug);
 
   if (!product) {
     return {
@@ -50,8 +54,7 @@ export default async function ProductDetail({
   params: Promise<{ productSlug: string }>;
 }) {
   const { productSlug } = await params;
-  const encodedProductSlug = decodeURIComponent(productSlug);
-  const product = await getProductByName(encodedProductSlug);
+  const product = await getProduct(productSlug);
 
   if (!product) {
     return <NotFound />;
@@ -60,8 +63,12 @@ export default async function ProductDetail({
   return (
     <div className="md:mt-10 xl:mt-15">
       <div className="flex">
-        <ProductInfo product={product} />
-        <PolicyList />
+        <div className="flex-1 lg:w-[70%]">
+          <ProductInfo product={product} />
+        </div>
+        <div className="ml-5 hidden w-[30%] flex-col items-center lg:flex">
+          <PolicyList />
+        </div>
       </div>
       <ProductDescription product={product} />
     </div>

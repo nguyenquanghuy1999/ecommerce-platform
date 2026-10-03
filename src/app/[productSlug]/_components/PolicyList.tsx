@@ -25,7 +25,7 @@ const policies = [
 
 export default function PolicyList() {
   return (
-    <div className="hidden w-[30%] flex-col items-center lg:flex">
+    <>
       <div className="max-w-71.25 border">
         <span className="inline-block h-10 w-full bg-gray-100 text-center text-sm leading-10 font-semibold">
           {policies[0].title}
@@ -53,6 +53,6 @@ export default function PolicyList() {
           ))}
         </ul>
       </div>
-    </div>
+    </>
   );
 }
