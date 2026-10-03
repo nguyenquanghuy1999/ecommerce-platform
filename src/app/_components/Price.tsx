@@ -1,7 +1,7 @@
 import { cn, formatPrice } from "@/src/lib/utils";
 
 type PriceProps = {
-  value: string;
+  value: string | number;
   size?: "md" | "lg";
   className?: string;
 };
