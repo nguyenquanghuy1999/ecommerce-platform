@@ -8,6 +8,7 @@ import { IoMdClose } from "react-icons/io";
 import { TiArrowBackOutline } from "react-icons/ti";
 import Price from "../_components/Price";
 import QuantitySelector from "../_components/QuantitySelector";
+import { useEffect, useState } from "react";
 
 export default function CartPageWrapper() {
   const items = useCartStore((state) => state.items);
@@ -16,11 +17,17 @@ export default function CartPageWrapper() {
 
   const route = useRouter();
 
-  const hasHydrated = useCartStore.persist.hasHydrated();
+  const [hasHydrated, setHasHydrated] = useState(false);
+
+  useEffect(() => {
+    setHasHydrated(useCartStore.persist.hasHydrated());
+  }, []);
 
   if (!hasHydrated) {
-    return null;
+    return null;  
   }
+
+  const totalQuantity = items.reduce((prev, item) => prev + item.quantity, 0);
 
   const totalPrice = items.reduce(
     (prev, { item, quantity }) => prev + Number(item.price) * quantity,
@@ -32,7 +39,7 @@ export default function CartPageWrapper() {
       <div className="text-center">
         <h1 className="text-[30px]">Giỏ hàng của bạn</h1>
         {items.length >= 1 ? (
-          <p>Có {items.length} sản phẩm</p>
+          <p>Có {totalQuantity} sản phẩm</p>
         ) : (
           <>
             <p>Không có sản phẩm nào</p>
