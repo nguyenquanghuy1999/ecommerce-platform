@@ -38,7 +38,7 @@ export default function ProductInfo({ product }: { product: Product }) {
         height={355}
         className="object-contain"
       />
-      <div className="text-center md:ml-5 md:text-start">
+      <div className="w-full text-center md:ml-5 md:w-auto md:text-start">
         <h1 className="text-[20px] font-semibold">{product.name}</h1>
         <p className="mt-3 text-sm">
           Tình trạng: <span className="font-medium">Còn hàng</span>
