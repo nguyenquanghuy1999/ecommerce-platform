@@ -40,3 +40,9 @@ export const getCategoryByName = async (
   }
   return category(snapshot.docs[0]);
 };
+
+export const getCategoryById = async (id: number): Promise<Category> => {
+  const q = query(categoriesCollection, where("id", "==", id));
+  const snapshot = await getDocs(q);
+  return category(snapshot.docs[0]);
+};

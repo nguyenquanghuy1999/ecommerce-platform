@@ -2,7 +2,7 @@
 import { Product } from "@/src/types";
 import { useEffect, useState } from "react";
 import ProductItem from "../../../_components/ProductItem";
-import CategoryBreadcrumb from "./CategoryBreadcrumb";
+import CategoryBreadcrumb from "../../../_components/Breadcrumb";
 import ProductFilter from "./ProductFilter";
 import ProductSort from "./ProductSort";
 import { useSearchParams } from "next/navigation";
@@ -26,6 +26,11 @@ export default function CategoryWrapper({
   const end = start + PAGE_SIZE;
 
   const currentProducts = productList.slice(start, end);
+
+  const breadcrumbItems = [
+    { label: "Trang chủ", href: "/" },
+    { label: currentPage },
+  ];
 
   useEffect(() => {
     const order = searchParams.get("order");
@@ -57,7 +62,7 @@ export default function CategoryWrapper({
       <ProductFilter products={products} />
       <div className="flex-1 lg:ml-5">
         <div className="flex flex-wrap items-center justify-between md:flex-nowrap">
-          <CategoryBreadcrumb currentPage={currentPage} />
+          <CategoryBreadcrumb items={breadcrumbItems} />
           <ProductSort />
         </div>
         <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">

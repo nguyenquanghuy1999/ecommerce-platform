@@ -5,6 +5,8 @@ import ProductDescription from "./_components/ProductDescription";
 import ProductInfo from "./_components/ProductInfo";
 import { Metadata } from "next";
 import { cache } from "react";
+import Breadcrumb from "../_components/Breadcrumb";
+import { getCategoryById } from "@/src/services/categoryService";
 
 const getProduct = cache((slug: string) => {
   return getProductBySlug(slug);
@@ -60,9 +62,18 @@ export default async function ProductDetail({
     return <NotFound />;
   }
 
+  const category = await getCategoryById(product.categoryId);
+  
+  const breadcrumbItems = [
+    { label: "Trang chủ", href: "/" },
+    { label: category.name, href: `/category/${category.name}` },
+    { label: product.name },
+  ];
+
   return (
-    <div className="md:mt-10 xl:mt-15">
-      <div className="flex">
+    <div className="mt-3 md:mt-5">
+      <Breadcrumb items={breadcrumbItems} />
+      <div className="mt-10 flex">
         <div className="flex-1 lg:w-[70%]">
           <ProductInfo product={product} />
         </div>
