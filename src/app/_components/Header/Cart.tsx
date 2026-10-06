@@ -15,7 +15,12 @@ export default function Cart() {
 
   return (
     <Link href="/cart">
-      <div className="relative px-1.5 hover:cursor-pointer md:px-0">
+      <div
+        className={cn(
+          "relative pl-1.5 hover:cursor-pointer",
+          totalQuantity >= 1 && "mr-3",
+        )}
+      >
         <IconCart className="fill-primary stroke-primary lg:fill-foreground lg:stroke-foreground" />
         {totalQuantity >= 1 && (
           <div
