@@ -46,7 +46,7 @@ export default function CategoryPagination({
             className={cn(
               "hover:bg-white",
               currentPage === 1 &&
-                "cursor-default text-gray-500 hover:text-gray-500 active:translate-y-0!",
+                "pointer-events-none cursor-default text-gray-500 hover:text-gray-500 active:translate-y-0!",
             )}
           />
         </PaginationItem>
