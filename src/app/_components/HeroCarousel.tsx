@@ -20,7 +20,7 @@ const items = [
 ];
 
 export default function HeroCarousel() {
-  const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
+  const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
 
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -48,6 +48,11 @@ export default function HeroCarousel() {
   const handleMouseLeave = () => {
     plugin.current.play();
     setShowActions(false);
+  };
+
+  const handleDotClick = (index: number) => {
+    api?.scrollTo(index);
+    plugin.current.play();
   };
 
   return (
@@ -80,7 +85,7 @@ export default function HeroCarousel() {
         {items.map((_, index) => (
           <button
             key={index}
-            onClick={() => api?.scrollTo(index)}
+            onClick={() => handleDotClick(index)}
             className={cn(
               "size-3 cursor-pointer rounded-full transition-colors",
               current === index
@@ -92,7 +97,7 @@ export default function HeroCarousel() {
       </div>
       <div
         className={cn(
-          "opacity-0 transition-opacity duration-200 ease-in",
+          "hidden opacity-0 transition-opacity duration-200 ease-in lg:block",
           showActions && "opacity-100",
         )}
       >
