@@ -19,7 +19,6 @@ export default function CategoryList({
   categories: Category[];
   setOpen?: Dispatch<SetStateAction<boolean>>;
 }) {
-
   return (
     <div className="flex max-h-57.5 w-full max-w-md flex-col gap-6 overflow-y-scroll md:max-h-87.75 [&::-webkit-scrollbar]:w-0.75 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-400">
       <ItemGroup className="gap-1">
@@ -29,7 +28,7 @@ export default function CategoryList({
             role="listitem"
             render={
               <Link
-                href={`/category/${category.normalizedName}`}
+                href={`/category/${category.slug}`}
                 onClick={() => setOpen?.(false)}
               >
                 <ItemMedia>

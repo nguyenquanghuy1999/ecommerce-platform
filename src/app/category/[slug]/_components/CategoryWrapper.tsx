@@ -33,6 +33,10 @@ export default function CategoryWrapper({
   ];
 
   useEffect(() => {
+    scrollTo({ top: 0 });
+  }, []);
+
+  useEffect(() => {
     const order = searchParams.get("order");
     const filterMemory = searchParams.get("filterMemory");
     const filterColor = searchParams.get("filterColor");

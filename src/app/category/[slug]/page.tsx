@@ -1,4 +1,4 @@
-import { getCategoryByName } from "@/src/services/categoryService";
+import { getCategoryBySlug } from "@/src/services/categoryService";
 import { getProductsByCategoryId } from "@/src/services/productService";
 import NotFound from "../../_components/NotFound";
 import CategoryWrapper from "./_components/CategoryWrapper";
@@ -6,7 +6,7 @@ import { Metadata } from "next";
 import { cache } from "react";
 
 const getCategory = cache((slug: string) => {
-  return getCategoryByName(slug);
+  return getCategoryBySlug(slug);
 });
 
 type Props = {

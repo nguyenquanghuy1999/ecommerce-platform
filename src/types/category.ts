@@ -2,6 +2,5 @@ export type Category = {
   id: number;
   image: string;
   name: string;
-  normalizedName: string;
+  slug: string;
 };
-

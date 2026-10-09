@@ -17,7 +17,7 @@ const category = (doc: QueryDocumentSnapshot<DocumentData>): Category => {
     id: data.id,
     name: data.name,
     image: data.image,
-    normalizedName: data.normalizedName,
+    slug: data.slug,
   };
 };
 
@@ -26,14 +26,10 @@ export const getCategories = async (): Promise<Category[]> => {
   return snapshot.docs.map(category);
 };
 
-export const getCategoryByName = async (
-  name: string,
+export const getCategoryBySlug = async (
+  slug: string,
 ): Promise<Category | null> => {
-  const normalizedName = name.trim().toLowerCase();
-  const q = query(
-    categoriesCollection,
-    where("normalizedName", "==", normalizedName),
-  );
+  const q = query(categoriesCollection, where("slug", "==", slug));
   const snapshot = await getDocs(q);
   if (snapshot.empty) {
     return null;

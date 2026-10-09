@@ -66,7 +66,7 @@ export default async function ProductDetail({
   
   const breadcrumbItems = [
     { label: "Trang chủ", href: "/" },
-    { label: category.name, href: `/category/${category.name}` },
+    { label: category.name, href: `/category/${category.slug}` },
     { label: product.name },
   ];
 
