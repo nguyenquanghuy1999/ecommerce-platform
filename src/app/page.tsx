@@ -10,7 +10,7 @@ export default async function Home() {
       <div className="mt-5">
         <HeroCarousel />
       </div>
-      <ul className="mt-10 flex gap-5 overflow-x-scroll md:justify-center md:overflow-auto lg:gap-15 xl:gap-23">
+      <ul className="mt-10 flex gap-5 pb-3 overflow-x-scroll md:justify-center md:overflow-auto lg:gap-15 xl:gap-23">
         {categories.map((category) => (
           <li className="shrink-0">
             <Link
