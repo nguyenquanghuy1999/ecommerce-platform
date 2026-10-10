@@ -63,7 +63,7 @@ export default async function ProductDetail({
   }
 
   const category = await getCategoryById(product.categoryId);
-  
+
   const breadcrumbItems = [
     { label: "Trang chủ", href: "/" },
     { label: category.name, href: `/category/${category.slug}` },
@@ -73,7 +73,7 @@ export default async function ProductDetail({
   return (
     <div className="mt-3 md:mt-5">
       <Breadcrumb items={breadcrumbItems} />
-      <div className="mt-10 flex">
+      <div className="mt-5 flex lg:mt-10">
         <div className="flex-1 lg:w-[70%]">
           <ProductInfo product={product} />
         </div>
