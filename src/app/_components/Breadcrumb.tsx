@@ -20,12 +20,12 @@ type BreadcrumbProps = {
 export default function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <BreadcrumbUI>
-      <BreadcrumbList>
+      <BreadcrumbList className="flex-nowrap overflow-x-auto pb-3 lg:overflow-x-visible lg:pb-0">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
           return (
             <React.Fragment key={`${item.label}-${index}`}>
-              <BreadcrumbItemUI>
+              <BreadcrumbItemUI className="text-nowrap">
                 {isLast ? (
                   <BreadcrumbPage className="text-muted-foreground">
                     {item.label}
