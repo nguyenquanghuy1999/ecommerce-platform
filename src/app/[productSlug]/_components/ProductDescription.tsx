@@ -30,7 +30,7 @@ export default function ProductDescription({ product }: { product: Product }) {
         <Image
           src={`${intro.image}`}
           alt={`${intro.title}`}
-          className="m-auto my-3.75 w-full md:w-[50%]"
+          className="m-auto my-3.75 w-full min-[1540px]:w-[20%]! md:w-[50%]"
           width={300}
           height={300}
         />
@@ -42,7 +42,7 @@ export default function ProductDescription({ product }: { product: Product }) {
               <Image
                 src={`${section.image}`}
                 alt={`${section.title}`}
-                className="m-auto my-3.75 w-full md:w-[50%]"
+                className="m-auto my-3.75 w-full min-[1540px]:w-[20%]! md:w-[50%]"
                 width={300}
                 height={300}
               />
