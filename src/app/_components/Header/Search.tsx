@@ -109,6 +109,7 @@ export function Search() {
     return () => {
       clearTimeout(debounceTimer);
       clearTimeout(resultTimer);
+      setIsLoading(false);  
     };
   }, [keyword, isSearchParamFromUrl, isEnterSearch]);
 
