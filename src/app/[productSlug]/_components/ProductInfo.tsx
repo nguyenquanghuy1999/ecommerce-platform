@@ -19,14 +19,14 @@ export default function ProductInfo({ product }: { product: Product }) {
     addItem(product, quantity);
     toast.add({
       type: "success",
-      description: `Đã thêm ${product.name} vào giỏ.`,
+      description: "Thêm vào giỏ hàng thành công",
       timeout: 3000,
     });
   };
 
   const handleBuyNow = () => {
     addItem(product, quantity);
-    route.push("/cart");
+  route.push("/cart");
   };
 
   return (

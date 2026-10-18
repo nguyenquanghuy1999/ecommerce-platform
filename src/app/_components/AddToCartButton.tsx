@@ -12,7 +12,7 @@ export default function AddToCartButton({ product }: { product: Product }) {
     addItem(product, 1);
     toast.add({
       type: "success",
-      description: `Đã thêm ${product.name} vào giỏ.`,
+      description: "Thêm vào giỏ hàng thành công",
       timeout: 3000,
     });
   };

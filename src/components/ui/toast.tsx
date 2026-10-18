@@ -58,7 +58,7 @@ function Toast({ className, ...props }: ToastPrimitive.Root.Props) {
         "data-expanded:data-ending-style:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x)+150%))_translateY(var(--offset-y))]",
         "data-expanded:data-ending-style:data-[swipe-direction=up]:[transform:translateY(calc(var(--toast-swipe-movement-y)-150%))]",
         className,
-        "border-none bg-green-600",
+        "w-fit border-none bg-green-600",
       )}
       {...props}
     />
@@ -82,7 +82,7 @@ function ToastTitle({ className, ...props }: ToastPrimitive.Title.Props) {
   return (
     <ToastPrimitive.Title
       data-slot="toast-title"
-      className={cn("text-sm font-medium", className)}
+      className={cn("text-md font-medium", className)}
       {...props}
     />
   );
@@ -95,7 +95,7 @@ function ToastDescription({
   return (
     <ToastPrimitive.Description
       data-slot="toast-description"
-      className={cn("text-sm text-white", className)}
+      className={cn("text-md text-white", className)}
       {...props}
     />
   );
@@ -145,7 +145,7 @@ function ToastIcon({ type }: { type: string | undefined }) {
     icon = (
       <CircleCheckIcon
         aria-hidden="true"
-        className="rounded-[50%] bg-white text-green-500"
+        className="size-4.25 rounded-[50%] bg-white text-green-500"
       />
     );
   }
