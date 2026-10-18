@@ -3,4 +3,5 @@ export type Category = {
   image: string;
   name: string;
   slug: string;
+  bannerImage: string;
 };

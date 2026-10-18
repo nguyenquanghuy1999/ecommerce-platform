@@ -18,6 +18,7 @@ const category = (doc: QueryDocumentSnapshot<DocumentData>): Category => {
     name: data.name,
     image: data.image,
     slug: data.slug,
+    bannerImage: data.bannerImage,
   };
 };
 

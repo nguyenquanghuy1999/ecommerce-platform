@@ -6,6 +6,7 @@ export type Product = {
   price: string;
   color: string;
   memory: string;
+  brandId: number;
   categoryId: number;
   details: {
     intro: {

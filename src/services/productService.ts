@@ -3,6 +3,7 @@ import {
   collection,
   getDocs,
   query,
+  limit,
   where,
   DocumentData,
   QueryDocumentSnapshot,
@@ -19,6 +20,7 @@ const product = (doc: QueryDocumentSnapshot<DocumentData>): Product => {
     image: data.image,
     price: data.price,
     color: data.color,
+    brandId: data.brandId,
     categoryId: data.categoryId,
     memory: data.memory,
     details: data.details,
@@ -44,8 +46,22 @@ export const getProductBySlug = async (
 
 export const getProductsByCategoryId = async (
   categoryId: number,
+  limitCount?: number,
 ): Promise<Product[]> => {
-  const q = query(productsCollection, where("categoryId", "==", categoryId));
+  const productsQuery =
+    limitCount !== undefined
+      ? query(productsCollection, limit(limitCount))
+      : productsCollection;
+
+  const q = query(productsQuery, where("categoryId", "==", categoryId));
   const snapshot = await getDocs(q);
   return snapshot.docs.map(product);
+};
+
+export const getBrandIdsByCategoryId = async (
+  categoryId: number,
+): Promise<number[]> => {
+  const q = query(productsCollection, where("categoryId", "==", categoryId));
+  const snapshot = await getDocs(q);
+  return [...new Set(snapshot.docs.map((doc) => doc.data().brandId))];
 };
