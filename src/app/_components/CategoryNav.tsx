@@ -9,7 +9,7 @@ export default async function CategoryNav() {
       {categories.map((category) => (
         <li key={category.id} className="shrink-0">
           <Link
-            href={`/category/${category.slug}`}
+            href={`/${category.slug}`}
             className="flex flex-col items-center"
           >
             <Image

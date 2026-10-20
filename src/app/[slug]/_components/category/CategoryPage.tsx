@@ -1,22 +1,21 @@
 "use client";
-import { Product } from "@/src/types";
+import { Category, Product } from "@/src/types";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import ProductItem from "../../../_components/ProductItem";
 import CategoryBreadcrumb from "../../../_components/Breadcrumb";
 import ProductFilter from "./ProductFilter";
-import ProductSort from "./ProductSort";
-import { useSearchParams } from "next/navigation";
+
+import ProductItem from "@/src/app/_components/ProductItem";
 import CategoryPagination from "./CategoyPagination";
+import ProductSort from "./ProductSort";
 
-type CategoryWrapperProps = {
-  products: Product[];
-  currentPage: string;
-};
-
-export default function CategoryWrapper({
+export default function CategoryPage({
   products,
-  currentPage,
-}: CategoryWrapperProps) {
+  category,
+}: {
+  products: Product[];
+  category: Category;
+}) {
   const [productList, setProductList] = useState<Product[]>([]);
   const searchParams = useSearchParams();
 
@@ -29,7 +28,7 @@ export default function CategoryWrapper({
 
   const breadcrumbItems = [
     { label: "Trang chủ", href: "/" },
-    { label: currentPage },
+    { label: category.name },
   ];
 
   useEffect(() => {

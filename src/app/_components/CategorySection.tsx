@@ -33,7 +33,7 @@ export default async function CategorySection({
     <div className="mt-10">
       <div className="border-primary flex cursor-pointer justify-between border-b-2">
         <Link
-          href={`/category/${slug}`}
+          href={`/${slug}`}
           className="bg-primary hover:text-muted h-10 rounded-tl-[5px] rounded-tr-[5px] px-3.25 text-center text-[18px] leading-10 font-bold text-white"
         >
           {category.name.toUpperCase()}
@@ -71,7 +71,7 @@ export default async function CategorySection({
         </div>
       </div>
       <div className="mt-5">
-        <Link href={`/category/${slug}`} className="block text-end">
+        <Link href={`/${slug}`} className="block text-end">
           <Button
             variant="outline"
             className="h-9 w-full cursor-pointer md:w-25"

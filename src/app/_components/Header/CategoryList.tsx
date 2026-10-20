@@ -28,7 +28,7 @@ export default function CategoryList({
             role="listitem"
             render={
               <Link
-                href={`/category/${category.slug}`}
+                href={`/${category.slug}`}
                 onClick={() => setOpen?.(false)}
               >
                 <ItemMedia>
