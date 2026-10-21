@@ -6,13 +6,12 @@ import {
   getProductBySlug,
   getProductsByCategoryId,
 } from "@/src/services/productService";
+import { Category, Product } from "@/src/types";
 import { Metadata } from "next";
 import { cache } from "react";
 import NotFound from "../_components/NotFound";
 import CategoryPage from "./_components/category/CategoryPage";
 import ProductPage from "./_components/product/ProductPage";
-import { Category, Product } from "@/src/types";
-import ProductFilter from "./_components/category/ProductFilter";
 
 type SlugData =
   | {
