@@ -2,6 +2,7 @@ import { categorySections } from "../config";
 import CategoryNav from "./_components/CategoryNav";
 import CategorySection from "./_components/CategorySection";
 import HeroCarousel from "./_components/HeroCarousel";
+import ScrollToTopButton from "./_components/ScrollToTopButton";
 
 export default async function Home() {
   return (
@@ -17,7 +18,7 @@ export default async function Home() {
           limit={section.limit}
         />
       ))}
+      <ScrollToTopButton />
     </>
   );
 }
-  
