@@ -21,7 +21,7 @@ export default function ProductDescription({ product }: { product: Product }) {
   };
 
   return (
-    <div className="mt-5 lg:mt-2">
+    <div className="mt-5 lg:mt-2 mb-10">
       <span className="bg-muted inline-block h-10 w-20.5 text-center leading-10 text-white">
         Mô tả
       </span>
