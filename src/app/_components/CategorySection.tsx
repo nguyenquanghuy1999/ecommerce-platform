@@ -30,7 +30,7 @@ export default async function CategorySection({
   const brands = await getBrandsByIds(brandIds);
 
   return (
-    <div className="mt-10">
+    <div className="my-10">
       <div className="border-primary flex cursor-pointer justify-between border-b-2">
         <Link
           href={`/${slug}`}
