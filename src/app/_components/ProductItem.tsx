@@ -15,7 +15,7 @@ export default function ProductItem({
   return (
     <div
       className={cn(
-        "group text-md hover:border-primary text flex min-h-80 w-full cursor-pointer flex-col justify-between overflow-hidden shadow-lg hover:border",
+        "group text-md hover:border-primary flex min-h-80 w-full cursor-pointer flex-col justify-between overflow-hidden border shadow-lg",
         className,
       )}
     >
