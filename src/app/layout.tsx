@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  // metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL("https://ecommerce-platform-delta-one.vercel.app"),
   title: "HShop - Điện thoại, laptop, tablet, phụ kiện chính hãng",
   description:
     "Mua sắm trực tuyến các sản phẩm công nghệ. Giá tốt & Miễn phí vận chuyển. Voucher Xtra | Freeship 0Đ | HShop Đảm Bảo",
