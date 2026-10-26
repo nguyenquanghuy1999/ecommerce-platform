@@ -3,6 +3,25 @@ import SearchEmpty from "@/src/app/search/SearchEmpty";
 import { Separator } from "@/src/components/ui/separator";
 import { searchProducts } from "@/src/lib/searchProducts";
 import { getProducts } from "@/src/services/productService";
+import { Metadata } from "next";
+
+type Props = {
+  searchParams: Promise<{ keyword?: string }>;
+};
+
+export async function generateMetadata({
+  searchParams,
+}: Props): Promise<Metadata> {
+  const { keyword } = await searchParams;
+
+  return {
+    title: `Kết quả tìm kiếm cho: "${keyword}"`,
+    robots: {
+      index: false,
+      follow: false,
+    },
+  };
+}
 
 export default async function Search({
   searchParams,
