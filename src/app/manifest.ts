@@ -1,10 +1,12 @@
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'HShop',
-    short_name: 'HShop',
-    start_url: '/',
-    display: 'standalone',
-  }
+    name: "HShop",
+    short_name: "HShop",
+    start_url: "/",
+    display: "standalone",
+    theme_color: "white",
+    background_color: "white",
+  };
 }
