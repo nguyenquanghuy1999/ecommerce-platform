@@ -26,6 +26,11 @@ export const metadata: Metadata = {
     follow: true,
   },
   verification: { google: "Bq1Km_TdPQywzZGcl3uq16Znhoeu-3ULxyqMWN5UmUQ" },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "HShop",
+  },
 };
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
