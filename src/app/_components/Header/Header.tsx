@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import { IoSearchOutline } from "react-icons/io5";
 import { IconUser } from "../icons/IconUser";
 import Cart from "./Cart";
 import Hotline from "./Hotline";
@@ -20,7 +21,24 @@ function Header() {
             </div>
           </Link>
         </div>
-        <Suspense fallback={<div className="h-10 w-10.75 md:w-84.5" />}>
+        <Suspense
+          fallback={
+            <div className="border-primary flex h-10 items-center rounded-[5px] md:w-84.5 md:border">
+              <div className="m-auto flex-1 items-center">
+                <div className="text-md hidden size-full px-2.5 md:block">
+                  <input
+                    type="text"
+                    placeholder="Tìm kiếm..."
+                    className="size-full outline-none"
+                  />
+                </div>
+              </div>
+              <button className="text-primary md:text-foreground hover:bg-primary flex h-full w-10.75 items-center justify-center text-[30px] transition duration-300 ease-in-out hover:cursor-pointer hover:text-white md:text-[23px]">
+                <IoSearchOutline />
+              </button>
+            </div>
+          }
+        >
           <Search />
         </Suspense>
         <Hotline />
