@@ -20,7 +20,7 @@ function Header() {
             </div>
           </Link>
         </div>
-        <Suspense>
+        <Suspense fallback={<div className="h-10 w-10.75 md:w-84.5" />}>
           <Search />
         </Suspense>
         <Hotline />
