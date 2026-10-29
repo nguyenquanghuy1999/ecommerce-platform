@@ -1,17 +1,39 @@
 import {
+  getCategories,
   getCategoryById,
   getCategoryBySlug,
 } from "@/src/services/categoryService";
 import {
   getProductBySlug,
+  getProducts,
   getProductsByCategoryId,
 } from "@/src/services/productService";
 import { Category, Product } from "@/src/types";
 import { Metadata } from "next";
-import { cache } from "react";
+import { cache, Suspense } from "react";
 import NotFound from "../_components/NotFound";
 import CategoryPage from "./_components/category/CategoryPage";
 import ProductPage from "./_components/product/ProductPage";
+
+export async function generateStaticParams() {
+  const [categories, products] = await Promise.all([
+    getCategories(),
+    getProducts(),
+  ]);
+
+  const categoryParams = categories.map((category) => ({
+    slug: category.slug,
+  }));
+
+  const productParams = products.map((product) => ({
+    slug: product.slug,
+  }));
+
+  return [...categoryParams, ...productParams];
+}
+
+export const dynamicParams = true;
+export const revalidate = 3600;
 
 type SlugData =
   | {
@@ -115,5 +137,9 @@ export default async function SlugPage({
   const category = slugData.data;
   const products = await getProductsByCategoryId(category.id);
 
-  return <CategoryPage category={category} products={products} />;
+  return (
+    <Suspense>
+      <CategoryPage category={category} products={products} />
+    </Suspense>
+  );
 }
