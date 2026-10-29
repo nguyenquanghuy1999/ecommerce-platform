@@ -47,8 +47,15 @@ export const getCategoryBySlug = unstable_cache(
   { revalidate: 3600, tags: ["categories"] },
 );
 
-export const getCategoryById = async (id: number): Promise<Category> => {
-  const q = query(categoriesCollection, where("id", "==", id));
-  const snapshot = await getDocs(q);
-  return category(snapshot.docs[0]);
-};
+export const getCategoryById = unstable_cache(
+  async (id: number): Promise<Category | null> => {
+    const q = query(categoriesCollection, where("id", "==", id));
+    const snapshot = await getDocs(q);
+    if (snapshot.empty) {
+      return null;
+    }
+    return category(snapshot.docs[0]);
+  },
+  ["categoryById"],
+  { revalidate: 3600, tags: ["categoryId"] },
+);
