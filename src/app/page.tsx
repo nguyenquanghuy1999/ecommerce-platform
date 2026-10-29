@@ -5,6 +5,7 @@ import HeroCarousel from "./_components/HeroCarousel";
 import ScrollToTopButton from "./_components/ScrollToTopButton";
 
 export default async function Home() {
+  console.log("Home");
   return (
     <>
       <div className="mt-5">
