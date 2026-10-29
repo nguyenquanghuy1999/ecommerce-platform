@@ -6,7 +6,5 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "HShop",
     start_url: "/",
     display: "standalone",
-    background_color: "#fff",
-    theme_color: "#fff"
   };
 }
