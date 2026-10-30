@@ -65,6 +65,7 @@ export default function CartPageWrapper() {
                   alt={`${item.name}`}
                   width={80}
                   height={80}
+                  preload
                   className="object-contain"
                 />
                 <div className="ml-3 w-full">

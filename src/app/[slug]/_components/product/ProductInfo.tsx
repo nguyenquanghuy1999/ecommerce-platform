@@ -26,7 +26,7 @@ export default function ProductInfo({ product }: { product: Product }) {
 
   const handleBuyNow = () => {
     addItem(product, quantity);
-  route.push("/cart");
+    route.push("/cart");
   };
 
   return (
@@ -36,6 +36,7 @@ export default function ProductInfo({ product }: { product: Product }) {
         alt={`${product.name}`}
         width={355}
         height={355}
+        preload
         className="object-contain"
       />
       <div className="w-full text-center md:ml-5 md:w-auto md:text-start">
