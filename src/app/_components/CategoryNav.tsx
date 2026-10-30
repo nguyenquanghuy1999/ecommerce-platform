@@ -12,12 +12,12 @@ export default async function CategoryNav() {
             href={`/${category.slug}`}
             className="flex flex-col items-center"
           >
-            <Image
+            <img
               alt={category.name}
               src={category.image}
               width={80}
               height={80}
-              priority={index === 0}
+              // preload={index === 0}
               className="transition-transform hover:rotate-45"
             />
             <span className="mt-3 text-[14px]">{category.name}</span>

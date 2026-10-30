@@ -68,14 +68,21 @@ export default function HeroCarousel() {
           <CarouselItem key={item.id} className="relative">
             <Card className="py-0">
               <CardContent className="px-0">
-                <Image
+                <img
+                  src={`/uploads/banners/${item.image}`}
+                  alt=""
+                  width={1200}
+                  height={400}
+                  className="h-50 w-full md:h-100"
+                />
+                {/* <Image
                   alt={item.title}
                   src={`/uploads/banners/${item.image}`}
                   width={1200}
                   height={400}
-                  priority={index === 0}
+                  preload={index === 0}
                   className="h-50 w-full md:h-100"
-                />
+                /> */}
               </CardContent>
             </Card>
           </CarouselItem>
