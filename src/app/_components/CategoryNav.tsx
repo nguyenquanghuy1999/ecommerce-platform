@@ -10,7 +10,7 @@ export default async function CategoryNav() {
         <li key={category.id} className="shrink-0">
           <Link
             href={`/${category.slug}`}
-            className="flex flex-col items-center"
+            className="flex h-[113px]  flex-col items-center"
           >
             <Image
               alt={category.name}
