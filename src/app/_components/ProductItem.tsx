@@ -25,6 +25,7 @@ export default function ProductItem({
           src={`${data.image}`}
           width={285}
           height={200}
+          preload
           className="mx-auto h-full max-h-50 object-contain transition-all duration-300 ease-in group-hover:scale-105"
         />
         <div className="mt-2 min-h-20">

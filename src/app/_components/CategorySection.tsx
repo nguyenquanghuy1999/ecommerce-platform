@@ -52,11 +52,12 @@ export default async function CategorySection({
           limit === 3 ? "lg:grid-cols-[2fr_2.25fr]" : "lg:grid-cols-[3fr_7fr]",
         )}
       >
-        <img
+        <Image
           src={category.bannerImage}
           alt={category.name}
           width={limit === 3 ? 540 : 285}
           height={370}
+          preload
           className="h-50 w-full md:h-75 lg:h-92.5"
         />
         <div
