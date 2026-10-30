@@ -6,11 +6,11 @@ import HeroCarousel from "./_components/HeroCarousel";
 import ScrollToTopButton from "./_components/ScrollToTopButton";
 
 export default async function Home() {
-  const categories = await getCategories();
+  // const categories = await getCategories();
   return (
     <>
       <div className="mt-5">
-        <HeroCarousel categories={categories} />
+        <HeroCarousel />
       </div>
       <CategoryNav />
       {categorySections.map((section) => (
