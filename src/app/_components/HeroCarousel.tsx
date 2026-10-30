@@ -12,6 +12,7 @@ import {
 } from "@/src/components/ui/carousel";
 import Image from "next/image";
 import { cn } from "@/src/lib/utils";
+import { Category } from "@/src/types";
 
 const items = [
   { id: 1, title: "item-1", image: "slide-1.png" },
@@ -19,7 +20,11 @@ const items = [
   { id: 3, title: "item-3", image: "slide-3.png" },
 ];
 
-export default function HeroCarousel() {
+export default function HeroCarousel({
+  categories,
+}: {
+  categories: Category[];
+}) {
   const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
 
   const [api, setApi] = useState<CarouselApi>();
@@ -64,13 +69,13 @@ export default function HeroCarousel() {
       onMouseLeave={handleMouseLeave}
     >
       <CarouselContent>
-        {items.map((item, index) => (
+        {categories.map((item, index) => (
           <CarouselItem key={item.id} className="relative">
             <Card className="py-0">
               <CardContent className="px-0">
                 <Image
-                  alt={item.title}
-                  src={`/uploads/banners/${item.image}`}
+                  alt={item.name}
+                  src={`${item.image}`}
                   width={1200}
                   height={400}
                   priority={index === 0}
@@ -82,7 +87,7 @@ export default function HeroCarousel() {
         ))}
       </CarouselContent>
       <div className="absolute bottom-5 mt-4 flex w-full justify-center gap-2">
-        {items.map((_, index) => (
+        {categories.map((_, index) => (
           <button
             key={index}
             onClick={() => handleDotClick(index)}
