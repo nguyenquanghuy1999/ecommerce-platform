@@ -7,7 +7,6 @@ import Hotline from "./Hotline";
 import Menu from "./Menu";
 import Nav from "./Nav";
 import { Search } from "./Search";
-import { IoSearchOutline } from "react-icons/io5";
 
 function Header() {
   return (
