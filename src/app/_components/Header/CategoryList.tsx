@@ -37,6 +37,7 @@ export default function CategoryList({
                     alt={category.name}
                     width={25}
                     height={25}
+                    preload
                     className="object-contain"
                   />
                 </ItemMedia>
