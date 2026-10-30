@@ -34,8 +34,6 @@ export const getCategories = unstable_cache(
 
 export const getCategoryBySlug = unstable_cache(
   async (slug: string): Promise<Category | null> => {
-    console.log("getCategoryBySlug");
-
     const q = query(categoriesCollection, where("slug", "==", slug));
     const snapshot = await getDocs(q);
     if (snapshot.empty) {
