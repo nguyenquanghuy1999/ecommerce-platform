@@ -57,7 +57,7 @@ export default async function CategorySection({
           alt={category.name}
           width={limit === 3 ? 540 : 285}
           height={370}
-          preload
+          loading="eager"
           className="h-50 w-full md:h-75 lg:h-92.5"
         />
         <div

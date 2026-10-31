@@ -36,7 +36,7 @@ export default function ProductInfo({ product }: { product: Product }) {
         alt={`${product.name}`}
         width={355}
         height={355}
-        preload
+        loading="eager"
         className="object-contain"
       />
       <div className="w-full text-center md:ml-5 md:w-auto md:text-start">
