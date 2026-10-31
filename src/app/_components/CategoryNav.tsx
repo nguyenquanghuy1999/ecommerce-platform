@@ -17,7 +17,8 @@ export default async function CategoryNav() {
               src={category.image}
               width={80}
               height={80}
-              preload
+              // preload
+              loading="eager"
               className="transition-transform hover:rotate-45"
             />
             <span className="mt-3 text-[14px]">{category.name}</span>
