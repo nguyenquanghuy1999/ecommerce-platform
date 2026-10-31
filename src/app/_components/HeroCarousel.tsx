@@ -74,7 +74,7 @@ export default function HeroCarousel() {
                   width={1200}
                   height={400}
                   // preload={index === 0}
-                  loading="eager"
+                  // loading="eager"
                   className="h-50 w-full md:h-100"
                 />
               </CardContent>
