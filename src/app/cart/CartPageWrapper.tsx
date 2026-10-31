@@ -21,6 +21,7 @@ export default function CartPageWrapper() {
 
   useEffect(() => {
     setHasHydrated(useCartStore.persist.hasHydrated());
+    scrollTo({ top: 0 });
   }, []);
 
   if (!hasHydrated) {
