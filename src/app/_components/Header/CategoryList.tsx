@@ -27,16 +27,14 @@ export default function CategoryList({
             key={category.id}
             role="listitem"
             render={
-              <Link
-                href={`/${category.slug}`}
-                onClick={() => setOpen?.(false)}
-              >
+              <Link href={`/${category.slug}`} onClick={() => setOpen?.(false)}>
                 <ItemMedia>
                   <Image
                     src={`${category.image}`}
                     alt={category.name}
                     width={25}
                     height={25}
+                    loading="eager"
                     className="object-contain"
                   />
                 </ItemMedia>

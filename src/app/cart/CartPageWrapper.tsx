@@ -21,10 +21,11 @@ export default function CartPageWrapper() {
 
   useEffect(() => {
     setHasHydrated(useCartStore.persist.hasHydrated());
+    scrollTo({ top: 0 });
   }, []);
 
   if (!hasHydrated) {
-    return null;  
+    return null;
   }
 
   const totalQuantity = items.reduce((prev, item) => prev + item.quantity, 0);
@@ -65,6 +66,7 @@ export default function CartPageWrapper() {
                   alt={`${item.name}`}
                   width={80}
                   height={80}
+                  loading="eager"
                   className="object-contain"
                 />
                 <div className="ml-3 w-full">

@@ -1,14 +1,14 @@
+import { Button } from "@/src/components/ui/button";
+import { cn } from "@/src/lib/utils";
+import { getBrandsByIds } from "@/src/services/brandService";
 import { getCategoryBySlug } from "@/src/services/categoryService";
 import {
   getBrandIdsByCategoryId,
   getProductsByCategoryId,
 } from "@/src/services/productService";
 import Image from "next/image";
-import ProductItem from "./ProductItem";
-import { getBrandsByIds } from "@/src/services/brandService";
 import Link from "next/link";
-import { Button } from "@/src/components/ui/button";
-import { cn } from "@/src/lib/utils";
+import ProductItem from "./ProductItem";
 
 export default async function CategorySection({
   slug,
@@ -57,6 +57,7 @@ export default async function CategorySection({
           alt={category.name}
           width={limit === 3 ? 540 : 285}
           height={370}
+          loading="eager"
           className="h-50 w-full md:h-75 lg:h-92.5"
         />
         <div

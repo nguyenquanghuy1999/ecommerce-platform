@@ -73,7 +73,7 @@ export default function HeroCarousel() {
                   src={`/uploads/banners/${item.image}`}
                   width={1200}
                   height={400}
-                  priority={index === 0}
+                  loading="eager"
                   className="h-50 w-full md:h-100"
                 />
               </CardContent>
