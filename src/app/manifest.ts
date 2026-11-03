@@ -5,6 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "HShop",
     short_name: "HShop",
     start_url: "/",
-    // display: "standalone",
+    display: "standalone",
+    orientation: "portrait",
   };
 }
