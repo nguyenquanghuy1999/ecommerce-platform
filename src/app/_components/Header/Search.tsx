@@ -154,12 +154,12 @@ export function Search() {
                 )}
               >
                 <input
-                  type="text"
-                  inputMode="text"
+                  type="search"
+                  inputMode="search"
                   enterKeyHint="search"
                   autoComplete="off"
                   readOnly={false}
-               
+
                   value={keyword}
                   placeholder="Tìm kiếm..."
                   className="size-full outline-none"
