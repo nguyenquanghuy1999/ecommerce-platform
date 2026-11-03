@@ -109,7 +109,7 @@ export function Search() {
     return () => {
       clearTimeout(debounceTimer);
       clearTimeout(resultTimer);
-      setIsLoading(false);  
+      setIsLoading(false);
     };
   }, [keyword, isSearchParamFromUrl, isEnterSearch]);
 
@@ -168,7 +168,7 @@ export function Search() {
                 <button
                   className={cn(
                     "text-primary md:text-foreground hover:bg-primary flex h-full w-10.75 items-center justify-center text-[30px] transition duration-300 ease-in-out hover:cursor-pointer hover:text-white md:text-[23px]",
-                    isMobile && "hidden",
+                    isMobile && "bg-primary text-white",
                   )}
                   onClick={goToSearch}
                 >
