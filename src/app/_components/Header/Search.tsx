@@ -139,7 +139,6 @@ export function Search() {
       <PopoverTrigger
         render={
           <div>
-            <input type="text" placeholder="Tìm kiếm..." />
             <div
               className={cn(
                 "border-primary m-auto flex h-10 items-center rounded-[5px] md:w-84.5 md:border",

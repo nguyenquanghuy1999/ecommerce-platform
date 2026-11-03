@@ -21,6 +21,7 @@ function Header() {
             </div>
           </Link>
         </div>
+        <input type="text" placeholder="Tìm kiếm..." />
         <Suspense
           fallback={
             <div className="border-primary flex h-10 items-center rounded-[5px] md:w-84.5 md:border">
