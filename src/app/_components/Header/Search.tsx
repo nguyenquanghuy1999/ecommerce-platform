@@ -155,6 +155,8 @@ export function Search() {
               >
                 <input
                   type="text"
+                  inputMode="text"
+                  enterKeyHint="done"
                   value={keyword}
                   placeholder="Tìm kiếm..."
                   className="size-full outline-none"
