@@ -149,7 +149,7 @@ export function Search() {
             >
               <div
                 className={cn(
-                  "text-md hidden flex-1 px-2.5 md:block",
+                  "text-md hidden flex-1 px-2.5 select-text md:block",
                   isMobile && "block",
                 )}
               >
@@ -159,7 +159,7 @@ export function Search() {
                   enterKeyHint="done"
                   value={keyword}
                   placeholder="Tìm kiếm..."
-                  className="size-full outline-none"
+                  className="size-full outline-none select-text"
                   onKeyDown={handleKeyDown}
                   onChange={handleChange}
                 />

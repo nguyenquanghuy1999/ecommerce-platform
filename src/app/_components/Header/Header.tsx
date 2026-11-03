@@ -26,6 +26,7 @@ function Header() {
           placeholder="Tìm kiếm..."
           inputMode="text"
           enterKeyHint="done"
+          className="select-text"
         />
         <Suspense
           fallback={
