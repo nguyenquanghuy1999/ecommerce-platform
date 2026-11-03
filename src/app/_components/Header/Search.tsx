@@ -23,7 +23,7 @@ import { getProducts } from "@/src/services/productService";
 import { Product } from "@/src/types";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import Price from "../Price";
 
@@ -39,8 +39,6 @@ export function Search() {
   const [isMobile, setIsMobile] = useState(false);
   const [isSearchMobileOpen, setIsSearchMobileOpen] = useState(false);
   const [isEnterSearch, setIsEnterSearch] = useState(false);
-
-  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -142,20 +140,11 @@ export function Search() {
         render={
           <div>
             <div
-              // className={cn(
-              //   "border-primary m-auto flex h-10 items-center rounded-[5px] md:w-84.5 md:border",
-              //   isMobile && "hidden",
-              //   isSearchMobileOpen &&
-              //     "fixed top-17.5 right-0 left-0 flex w-[90%] border bg-white shadow-md",
-              // )}
               className={cn(
                 "border-primary m-auto flex h-10 items-center rounded-[5px] md:w-84.5 md:border",
-                isMobile &&
-                  !isSearchMobileOpen &&
-                  "pointer-events-none absolute -top-96 h-0 overflow-hidden opacity-0",
-                isMobile &&
-                  isSearchMobileOpen &&
-                  "pointer-events-auto fixed top-17.5 right-0 left-0 z-50 flex w-[90%] border bg-white opacity-100 shadow-md",
+                isMobile && "hidden",
+                isSearchMobileOpen &&
+                  "fixed top-17.5 right-0 left-0 flex w-[90%] border bg-white",
               )}
             >
               <div
@@ -165,8 +154,12 @@ export function Search() {
                 )}
               >
                 <input
-                  ref={inputRef}
                   type="text"
+                  inputMode="text"
+                  enterKeyHint="search"
+                  autoComplete="off"
+                  readOnly={false}
+               
                   value={keyword}
                   placeholder="Tìm kiếm..."
                   className="size-full outline-none"
@@ -180,7 +173,7 @@ export function Search() {
                 <button
                   className={cn(
                     "text-primary md:text-foreground hover:bg-primary flex h-full w-10.75 items-center justify-center text-[30px] transition duration-300 ease-in-out hover:cursor-pointer hover:text-white md:text-[23px]",
-                    isMobile && "bg-primary text-white",
+                    isMobile && "hidden",
                   )}
                   onClick={goToSearch}
                 >
@@ -193,14 +186,7 @@ export function Search() {
                 "text-primary hidden w-10.75 items-center justify-center text-[30px]",
                 isMobile && "flex",
               )}
-              onClick={() => {
-                const nextOpen = !isSearchMobileOpen;
-                setIsSearchMobileOpen(nextOpen);
-                if (nextOpen) {
-                  // Gọi focus TRỰC TIẾP và ĐỒNG BỘ ngay trong sự kiện click để iOS Safari chịu bật bàn phím ảo
-                  inputRef.current?.focus();
-                }
-              }}
+              onClick={() => setIsSearchMobileOpen(!isSearchMobileOpen)}
             >
               <IoSearchOutline />
             </button>
@@ -225,8 +211,7 @@ export function Search() {
                     key={item.id}
                     variant="outline"
                     role="listitem"
-                    onMouseDown={(e) => {
-                      e.preventDefault();
+                    onMouseDown={() => {
                       setIsResult(false);
                       router.push(`/${item.slug}`);
                     }}
