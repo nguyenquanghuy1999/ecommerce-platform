@@ -23,7 +23,7 @@ import { getProducts } from "@/src/services/productService";
 import { Product } from "@/src/types";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import Price from "../Price";
 
@@ -39,6 +39,8 @@ export function Search() {
   const [isMobile, setIsMobile] = useState(false);
   const [isSearchMobileOpen, setIsSearchMobileOpen] = useState(false);
   const [isEnterSearch, setIsEnterSearch] = useState(false);
+
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -138,13 +140,29 @@ export function Search() {
     <Popover open={isResult} onOpenChange={setIsResult}>
       <PopoverTrigger
         render={
-          <div>
-            <div
+          <div className="relative">
+            {/* <div
               className={cn(
                 "border-primary m-auto flex h-10 items-center rounded-[5px] md:w-84.5 md:border",
                 isMobile && "hidden",
                 isSearchMobileOpen &&
                   "fixed top-17.5 right-0 left-0 flex w-[90%] border bg-white",
+              )}
+            > */}
+            <div
+              className={cn(
+                "border-primary m-auto flex h-10 items-center rounded-[5px] bg-white transition-all duration-200",
+                // Style cho Desktop
+                !isMobile && "relative w-84.5 border",
+                // Style cho Mobile (Luôn fixed sẵn, chỉ dịch chuyển bằng transform)
+                isMobile &&
+                  "fixed top-17.5 right-0 left-0 z-50 w-[90%] border shadow-md",
+                isMobile &&
+                  !isSearchMobileOpen &&
+                  "pointer-events-none invisible -translate-y-4 opacity-0",
+                isMobile &&
+                  isSearchMobileOpen &&
+                  "pointer-events-auto visible translate-y-0 opacity-100",
               )}
             >
               <div
@@ -181,7 +199,17 @@ export function Search() {
                 "text-primary hidden w-10.75 items-center justify-center text-[30px]",
                 isMobile && "flex",
               )}
-              onClick={() => setIsSearchMobileOpen(!isSearchMobileOpen)}
+              // onClick={() => setIsSearchMobileOpen(!isSearchMobileOpen)}
+              onClick={() => {
+                const nextOpen = !isSearchMobileOpen;
+                setIsSearchMobileOpen(nextOpen);
+                if (nextOpen) {
+                  // Đợi 50ms để WebKit của iOS PWA kịp render layer fixed xong rồi mới ép focus bàn phím
+                  setTimeout(() => {
+                    inputRef.current?.focus();
+                  }, 50);
+                }
+              }}
             >
               <IoSearchOutline />
             </button>
