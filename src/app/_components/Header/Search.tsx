@@ -183,7 +183,6 @@ export function Search() {
                   className="size-full antialiased outline-none select-text"
                   onKeyDown={handleKeyDown}
                   onChange={handleChange}
-                  onTouchStart={handleTouch}
                 />
               </div>
               {isLoading ? (
