@@ -23,7 +23,7 @@ import { getProducts } from "@/src/services/productService";
 import { Product } from "@/src/types";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import Price from "../Price";
 
@@ -39,6 +39,15 @@ export function Search() {
   const [isMobile, setIsMobile] = useState(false);
   const [isSearchMobileOpen, setIsSearchMobileOpen] = useState(false);
   const [isEnterSearch, setIsEnterSearch] = useState(false);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleTouch = (e: React.TouchEvent) => {
+    // Ép WebKit hiểu đây là tương tác chạm trực tiếp của người dùng
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -162,6 +171,7 @@ export function Search() {
                   className="size-full outline-none select-text"
                   onKeyDown={handleKeyDown}
                   onChange={handleChange}
+                  onTouchStart={handleTouch}
                 />
               </div>
               {isLoading ? (
