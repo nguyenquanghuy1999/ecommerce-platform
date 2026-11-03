@@ -169,7 +169,7 @@ export function Search() {
                   value={keyword}
                   placeholder="Tìm kiếm..."
                   className="size-full outline-none select-text"
-                  onKeyDown={handleKeyDown}
+                  // onKeyDown={handleKeyDown}
                   onChange={handleChange}
                   onTouchStart={handleTouch}
                 />
