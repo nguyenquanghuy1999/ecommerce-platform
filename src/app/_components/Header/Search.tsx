@@ -155,7 +155,7 @@ export function Search() {
                 "border-primary m-auto flex h-10 items-center rounded-[5px] md:w-84.5 md:border",
                 isMobile && "hidden",
                 isSearchMobileOpen &&
-                  "fixed top-17.5 right-0 left-0 flex w-[90%] border bg-white",
+                  "fixed top-17.5 right-0 left-0 z-50 flex w-[90%] border bg-white shadow-md",
               )}
             >
               <div
@@ -218,7 +218,8 @@ export function Search() {
                     key={item.id}
                     variant="outline"
                     role="listitem"
-                    onMouseDown={() => {
+                    onMouseDown={(e) => {
+                      e.preventDefault();
                       setIsResult(false);
                       router.push(`/${item.slug}`);
                     }}
