@@ -142,11 +142,20 @@ export function Search() {
         render={
           <div>
             <div
+              // className={cn(
+              //   "border-primary m-auto flex h-10 items-center rounded-[5px] md:w-84.5 md:border",
+              //   isMobile && "hidden",
+              //   isSearchMobileOpen &&
+              //     "fixed top-17.5 right-0 left-0 flex w-[90%] border bg-white shadow-md",
+              // )}
               className={cn(
                 "border-primary m-auto flex h-10 items-center rounded-[5px] md:w-84.5 md:border",
-                isMobile && "hidden",
-                isSearchMobileOpen &&
-                  "fixed top-17.5 right-0 left-0 flex w-[90%] border bg-white shadow-md",
+                isMobile &&
+                  !isSearchMobileOpen &&
+                  "pointer-events-none absolute -top-96 h-0 overflow-hidden opacity-0",
+                isMobile &&
+                  isSearchMobileOpen &&
+                  "pointer-events-auto fixed top-17.5 right-0 left-0 z-50 flex w-[90%] border bg-white opacity-100 shadow-md",
               )}
             >
               <div
