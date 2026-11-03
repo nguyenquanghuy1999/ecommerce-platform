@@ -59,15 +59,6 @@ export function Search() {
   }, []);
 
   useEffect(() => {
-    if (isSearchMobileOpen) {
-      const timer = setTimeout(() => {
-        inputRef.current?.focus();
-      }, 150); // Delay 150ms để iOS Safari standalone kịp render xong khung fixed
-      return () => clearTimeout(timer);
-    }
-  }, [isSearchMobileOpen]);
-
-  useEffect(() => {
     if (pathname === "/") {
       setKeyword("");
       setIsSearchMobileOpen(false);
@@ -155,7 +146,7 @@ export function Search() {
                 "border-primary m-auto flex h-10 items-center rounded-[5px] md:w-84.5 md:border",
                 isMobile && "hidden",
                 isSearchMobileOpen &&
-                  "fixed top-17.5 right-0 left-0 z-50 flex w-[90%] border bg-white shadow-md",
+                  "fixed top-17.5 right-0 left-0 flex w-[90%] border bg-white shadow-md",
               )}
             >
               <div
@@ -193,7 +184,14 @@ export function Search() {
                 "text-primary hidden w-10.75 items-center justify-center text-[30px]",
                 isMobile && "flex",
               )}
-              onClick={() => setIsSearchMobileOpen(!isSearchMobileOpen)}
+              onClick={() => {
+                const nextOpen = !isSearchMobileOpen;
+                setIsSearchMobileOpen(nextOpen);
+                if (nextOpen) {
+                  // Gọi focus TRỰC TIẾP và ĐỒNG BỘ ngay trong sự kiện click để iOS Safari chịu bật bàn phím ảo
+                  inputRef.current?.focus();
+                }
+              }}
             >
               <IoSearchOutline />
             </button>
