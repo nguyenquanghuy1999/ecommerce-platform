@@ -23,7 +23,7 @@ import { getProducts } from "@/src/services/productService";
 import { Product } from "@/src/types";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import Price from "../Price";
 
@@ -40,6 +40,8 @@ export function Search() {
   const [isSearchMobileOpen, setIsSearchMobileOpen] = useState(false);
   const [isEnterSearch, setIsEnterSearch] = useState(false);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
@@ -55,6 +57,15 @@ export function Search() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    if (isSearchMobileOpen) {
+      const timer = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 150); // Delay 150ms để iOS Safari standalone kịp render xong khung fixed
+      return () => clearTimeout(timer);
+    }
+  }, [isSearchMobileOpen]);
 
   useEffect(() => {
     if (pathname === "/") {
@@ -154,11 +165,11 @@ export function Search() {
                 )}
               >
                 <input
+                  ref={inputRef}
                   type="text"
                   value={keyword}
                   placeholder="Tìm kiếm..."
                   className="size-full outline-none"
-                  onClick={(e) => e.currentTarget.focus()}
                   onKeyDown={handleKeyDown}
                   onChange={handleChange}
                 />
