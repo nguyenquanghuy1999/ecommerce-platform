@@ -42,12 +42,24 @@ export function Search() {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleTouch = (e: React.TouchEvent) => {
-    // Ép WebKit hiểu đây là tương tác chạm trực tiếp của người dùng
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  };
+  useEffect(() => {
+    const inputEl = inputRef.current;
+    if (!inputEl) return;
+
+    const forceKeyboard = () => {
+      // Ép tiêu điểm ngay ở tầng phần cứng touch gốc của trình duyệt
+      inputEl.focus();
+    };
+
+    // Đăng ký ở giai đoạn Capturing (chạy trước mọi thư viện UI hay React Event)
+    inputEl.addEventListener("touchstart", forceKeyboard, true);
+    inputEl.addEventListener("mousedown", forceKeyboard, true);
+
+    return () => {
+      inputEl.removeEventListener("touchstart", forceKeyboard, true);
+      inputEl.removeEventListener("mousedown", forceKeyboard, true);
+    };
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -168,8 +180,8 @@ export function Search() {
                   enterKeyHint="done"
                   value={keyword}
                   placeholder="Tìm kiếm..."
-                  className="size-full outline-none select-text"
-                  // onKeyDown={handleKeyDown}
+                  className="size-full antialiased outline-none select-text"
+                  onKeyDown={handleKeyDown}
                   onChange={handleChange}
                   onTouchStart={handleTouch}
                 />
