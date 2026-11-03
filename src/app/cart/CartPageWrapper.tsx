@@ -66,7 +66,7 @@ export default function CartPageWrapper() {
                   alt={`${item.name}`}
                   width={80}
                   height={80}
-                  loading="eager"
+                  // loading="eager"
                   className="object-contain"
                 />
                 <div className="ml-3 w-full">
