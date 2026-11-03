@@ -158,6 +158,7 @@ export function Search() {
                   value={keyword}
                   placeholder="Tìm kiếm..."
                   className="size-full outline-none"
+                  onClick={(e) => e.currentTarget.focus()}
                   onKeyDown={handleKeyDown}
                   onChange={handleChange}
                 />
