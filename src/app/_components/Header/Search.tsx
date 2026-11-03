@@ -154,12 +154,7 @@ export function Search() {
                 )}
               >
                 <input
-                  type="search"
-                  inputMode="search"
-                  enterKeyHint="search"
-                  autoComplete="off"
-                  readOnly={false}
-
+                  type="text"
                   value={keyword}
                   placeholder="Tìm kiếm..."
                   className="size-full outline-none"
@@ -173,7 +168,7 @@ export function Search() {
                 <button
                   className={cn(
                     "text-primary md:text-foreground hover:bg-primary flex h-full w-10.75 items-center justify-center text-[30px] transition duration-300 ease-in-out hover:cursor-pointer hover:text-white md:text-[23px]",
-                    isMobile && "hidden",
+                    isMobile && "bg-primary text-white",
                   )}
                   onClick={goToSearch}
                 >
